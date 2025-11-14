@@ -65,6 +65,23 @@ st.dataframe(df[pretty_cols], hide_index=True, use_container_width=True)
 
 st.markdown("---")
 
+month_names = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December"
+}
+
+events_by_month.index = events_by_month.index.map(month_names)
+
 if chart_choice == "Events per Month":
     st.markdown("### 📈 Events per Month")
     st.caption("Number of ATP tournaments occurring each month.")
