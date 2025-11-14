@@ -76,12 +76,3 @@ else:
     st.bar_chart(events_by_country)
 
 st.markdown("---")
-
-st.markdown(
-    """
-    <p style="text-align:center; color:#888; font-size:14px; margin-top:30px;">
-        Built using the free TheSportsDB Tennis API 🎾
-    </p>
-    """,
-    unsafe_allow_html=True,
-)
