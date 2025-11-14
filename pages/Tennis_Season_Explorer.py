@@ -14,19 +14,36 @@ def get_atp_season(season):
     events = data.get("events", []) or []
     return pd.DataFrame(events)
 
-st.title("🎾 ATP Tennis Season Explorer")
-st.write("""
-This page analyzes data from the **ATP World Tour API**.
-Choose a season and chart type to explore official ATP events.
-""")
+st.set_page_config(page_title="ATP Season Explorer", page_icon="🎾", layout="centered")
 
-
-season = st.selectbox(
-    "Select a Season:",
-    ["2025", "2024", "2023", "2022", "2021"],
-    index=2
+st.markdown(
+    """
+    <h1 style="text-align:center; margin-bottom:0px;">🎾 ATP Tennis Season Explorer</h1>
+    <p style="text-align:center; font-size:18px; color:#bdbdbd;">
+        Explore official ATP tournaments by season with interactive charts.
+    </p>
+    """,
+    unsafe_allow_html=True,
 )
 
+st.markdown("---")
+
+col1, col2 = st.columns([1, 1])
+
+with col1:
+    season = st.selectbox(
+        "📅 Select a Season:",
+        ["2025", "2024", "2023", "2022", "2021"],
+        index=2,
+        help="Choose which ATP season to explore",
+    )
+
+with col2:
+    chart_choice = st.radio(
+        "📊 Chart Type:",
+        ["Events per Month", "Events per Country"],
+        horizontal=True,
+    )
 
 df = get_atp_season(season)
 
@@ -34,27 +51,37 @@ if df.empty:
     st.warning("No data found for this season.")
     st.stop()
 
-df["dateEvent"] = pd.to_datetime(df["dateEvent"], errors="ignore")
-df["month"] = pd.to_datetime(df["dateEvent"], errors="coerce").dt.month
-
-st.write(f"### ATP Events for {season}")
-st.dataframe(df[["dateEvent", "strEvent", "strVenue", "strCity", "strCountry"]])
-
+df["dateEvent"] = pd.to_datetime(df["dateEvent"], errors="coerce")
+df["month"] = df["dateEvent"].dt.month
 
 events_by_month = df.groupby("month").size()
 events_by_country = df.groupby("strCountry").size().sort_values(ascending=False)
 
+st.markdown("### 🗂️ Events Table")
+st.caption(f"Showing all {len(df)} ATP events for **{season}**.")
 
-chart_choice = st.radio(
-    "Choose the Chart You Want to View:",
-    ["Events per Month", "Events per Country"]
-)
+pretty_cols = ["dateEvent", "strEvent", "strVenue", "strCity", "strCountry"]
+st.dataframe(df[pretty_cols], hide_index=True, use_container_width=True)
 
-st.subheader(f"📊 {chart_choice}")
-
+st.markdown("---")
 
 if chart_choice == "Events per Month":
+    st.markdown("### 📈 Events per Month")
+    st.caption("Number of ATP tournaments occurring each month.")
     st.line_chart(events_by_month)
 
 else:
+    st.markdown("### 🌍 Events per Country")
+    st.caption("How many ATP tournaments were held in each country.")
     st.bar_chart(events_by_country)
+
+st.markdown("---")
+
+st.markdown(
+    """
+    <p style="text-align:center; color:#888; font-size:14px; margin-top:30px;">
+        Built using the free TheSportsDB Tennis API 🎾
+    </p>
+    """,
+    unsafe_allow_html=True,
+)
