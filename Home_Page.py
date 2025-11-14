@@ -21,8 +21,8 @@ st.subheader("Rohit Naras, Tatenda Muchandibaya Ncube Jr.")
 st.markdown("""
 Welcome to our Streamlit Web Development Lab03 app! You can navigate between the pages using the sidebar to the left. The following pages are:
 
-1.Home Page: This is the home page, you are currently on here!
-2.Tournament Stats Page: This page is a database of all the top tennis players and their stats.
+1.Home Page: This is the home page, you are currently on here!\n
+2.Tournament Stats Page: This page is a database of all the top tennis players and their stats.\n
 3.
 4.
 
