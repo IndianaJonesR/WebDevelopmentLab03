@@ -18,7 +18,7 @@ st.subheader("Rohit Naras, Tatenda Muchandibaya Ncube Jr.")
 #       3. **Page Name**: Description
 #       4. **Page Name**: Description
 
-st.write("""
+st.markdown("""
 Welcome to our Streamlit Web Development Lab03 app! You can navigate between the pages using the sidebar to the left. The following pages are:
 
 1.Home Page: This is the home page, you are currently on here!
