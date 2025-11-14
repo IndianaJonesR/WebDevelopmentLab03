@@ -1,14 +1,14 @@
 import streamlit as st
 
 # Title of App
-st.title("Web Development Lab03")
+st.title("Tennis Stats Tracker")
 
 # Assignment Data 
 # TODO: Fill out your team number, section, and team members
 
 st.header("CS 1301")
-st.subheader("Team XX, Web Development - Section X")
-st.subheader("Team Member 1, Team Member 2")
+st.subheader("Team 51, Web Development - Section C")
+st.subheader("Rohit Naras, Tatenda Muchandibaya Ncube Jr.")
 
 
 # Introduction
@@ -21,8 +21,8 @@ st.subheader("Team Member 1, Team Member 2")
 st.write("""
 Welcome to our Streamlit Web Development Lab03 app! You can navigate between the pages using the sidebar to the left. The following pages are:
 
-1.
-2.
+1.Home Page: This is the home page, you are currently on here!
+2.Tournament Stats Page: This page is a database of all the top tennis players and their stats.
 3.
 4.
 
