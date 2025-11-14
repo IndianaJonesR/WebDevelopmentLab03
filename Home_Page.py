@@ -24,7 +24,7 @@ Welcome to our Streamlit Web Development Lab03 app! You can navigate between the
 The following pages are available\n:
 
 1. Home Page: This is the home page, you are currently on here!\n
-2. Tournament Stats Page: This page is a database of all the top tennis players and their stats.\n
+2. Tennis Season Explorer: This page is a database of all the top tennis players and their stats.\n
 3.
 4.
 
