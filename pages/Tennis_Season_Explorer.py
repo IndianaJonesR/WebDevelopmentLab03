@@ -60,7 +60,7 @@ events_by_country = df.groupby("strCountry").size().sort_values(ascending=False)
 st.markdown("### 🗂️ Events Table")
 st.caption(f"Showing all {len(df)} ATP events for **{season}**.")
 
-pretty_cols = ["dateEvent", "strEvent", "strVenue", "strCity", "strCountry"]
+pretty_cols = ["Date", "Event", "Venue", "City", "Country"]
 st.dataframe(df[pretty_cols], hide_index=True, use_container_width=True)
 
 st.markdown("---")
